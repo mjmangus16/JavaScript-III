@@ -21,10 +21,40 @@ console.log(windowThis);
 
 // code example for Implicit Binding
 
+const object = {
+  name: "Michael",
+  greeting: "Hi",
+  sayHello: function() {
+    return `Hello, my name is ${this.name}.`;
+  }
+};
+
+console.log(object.sayHello());
+
 // Principle 3
 
 // code example for New Binding
 
+function Person(name) {
+  this.name = name;
+  this.greeting = "Welcome to the constructor";
+  this.speak = function() {
+    console.log(`${this.greeting}, ${this.name}`);
+  };
+}
+
+const mike = new Person("Mike");
+const jeff = new Person("Jeff");
+
+mike.speak();
+jeff.speak();
+
 // Principle 4
 
 // code example for Explicit Binding
+
+function speak2() {
+  console.log(`${this.greeting}, ${this.name} is with explicit binding`);
+}
+
+speak2.call(object);
